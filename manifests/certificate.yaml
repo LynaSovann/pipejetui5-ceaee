@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: pipejetui5-ceaee-certificate
+  namespace: pipejetui5-ceaee
+spec:
+  secretName: pipejetui5-ceaee-secret-tls
+  commonName: thanak81-pipejetui5.assessify.org
+  dnsNames:
+  - thanak81-pipejetui5.assessify.org
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
