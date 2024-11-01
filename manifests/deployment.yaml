@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipejetui5-ceaee-deployment
+  labels:
+    app: pipejetui5-ceaee
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pipejetui5-ceaee
+  template:
+    metadata:
+      labels:
+        app: pipejetui5-ceaee
+    spec:
+      containers:
+        - name: pipejetui5-ceaee-container
+          image: pipejet/pipejetui5-ceaee:latest
+          ports:
+            - containerPort: 3000
