@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pipejetui5-ceaee-https-ingress
+  namespace: pipejetui5-ceaee
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - thanak81-pipejetui5.assessify.org
+      secretName: pipejetui5-ceaee-secret-tls
+  rules:
+    - host: thanak81-pipejetui5.assessify.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pipejetui5-ceaee-service
+                port:
+                  number: 8099
